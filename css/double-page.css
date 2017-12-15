@@ -71,3 +71,22 @@ body{
 	height:400px;
 	background-size:100% 100%;
 }
+
+.copyright {
+	color: #666;
+	font-size: 12px;
+	position: relative;
+	margin-top: -25px;
+
+}
+.copyright a {
+	-moz-transition: color .2s ease-in-out;
+	-webkit-transition: color .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out;
+	transition: color .2s ease-in-out;
+	color: inherit;
+	margin-left: -50px;
+}
+.copyright a:hover {
+	color: #c0c0c0;
+}
