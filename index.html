@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="shortcut icon" href="pages/favicon.ico" type="image/x-icon"/>
 <meta name="viewport" content="width = 1050, user-scalable = no" />
 <script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
 <script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<title>Vancouver's Fall</title>
 </head>
 <body>
 
 <div class="flipbook-viewport">
 	<div class="container">
 		<div class="flipbook">
-			<div class="page" style="background-image:url(pages/1-min.png)"></div>
-			<div class="double" style="background-image:url(pages/2-min.png)"></div>
+			<div class="page" style="background-image:url(pages/1-min.jpg)"></div>
+			<div class="double" style="background-image:url(pages/2-min.jpg)"></div>
 			<div class="double" style="background-image:url(pages/3-min.jpg)"></div>
 			<div class="double" style="background-image:url(pages/4-min.jpg)"></div>
 			<div class="double" style="background-image:url(pages/5-min.jpg)"></div>
 			<div class="double" style="background-image:url(pages/6-min.jpg)"></div>
 			<div class="page" style="background-image:url(pages/7-min.jpg)"></div>
 		</div>
-		<div class=copyright><a href="http://www.marianacaldas.com/" target="_blank">&copy; Mariana Caldas 2017</a></div>			
+		<div class="copyright" id="copyright" style="display: none;"><a href="http://www.marianacaldas.com/" target="_blank">&copy; Mariana Caldas 2017</a></div>
 	</div>
 </div>
 
 <script type="text/javascript">
 
-function loadApp() {
+$(document).ready(function(){
 
-	var flipbook = $('.flipbook');
+	function loadApp() {
 
- 	// Check if the CSS was already loaded
-	
-	if (flipbook.width()==0 || flipbook.height()==0) {
-		setTimeout(loadApp, 10);
-		return;
+		var flipbook = $('.flipbook');
+
+	 	// Check if the CSS was already loaded
+		
+		if (flipbook.width()==0 || flipbook.height()==0) {
+			setTimeout(loadApp, 10);
+			return;
+		}
+
+		$('.flipbook .double').scissor();
+
+		// Create the flipbook
+
+		$('.flipbook').turn({
+				// Elevation
+
+				elevation: 50,
+				
+				// Enable gradients
+
+				gradients: true,
+				
+				// Auto center this flipbook
+
+				autoCenter: true
+
+		});
+
+		$('#copyright').css("display","block");
 	}
-
-	$('.flipbook .double').scissor();
-
-	// Create the flipbook
-
-	$('.flipbook').turn({
-			// Elevation
-
-			elevation: 50,
-			
-			// Enable gradients
-
-			gradients: true,
-			
-			// Auto center this flipbook
-
-			autoCenter: true
+	// Load the HTML4 version if there's not CSS transform
+	yepnope({
+		test : Modernizr.csstransforms,
+		yep: ['lib/turn.min.js'],
+		nope: ['lib/turn.html4.min.js'],
+		both: ['lib/scissor.min.js', 'css/double-page.css'],
+		complete: loadApp
 
 	});
-}
-// Load the HTML4 version if there's not CSS transform
-yepnope({
-	test : Modernizr.csstransforms,
-	yep: ['lib/turn.min.js'],
-	nope: ['lib/turn.html4.min.js'],
-	both: ['lib/scissor.min.js', 'css/double-page.css'],
-	complete: loadApp
-});
 
+});
 </script>
 </body>
 </html>
