@@ -1,10 +1,11 @@
-/* Basic sample */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600,600italic,700");
 
 body{
 	overflow:hidden;
 	background-color:#fcfcfc;
 	margin:0;
 	padding:0;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .flipbook-viewport{
@@ -74,7 +75,7 @@ body{
 
 .copyright {
 	color: #666;
-	font-size: 12px;
+	font-family: 
 	position: relative;
 	margin-top: -25px;
 
@@ -86,6 +87,7 @@ body{
 	transition: color .2s ease-in-out;
 	color: inherit;
 	margin-left: -50px;
+	font-size: 12px;
 }
 .copyright a:hover {
 	color: #c0c0c0;
